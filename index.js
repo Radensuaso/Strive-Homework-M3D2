@@ -25,7 +25,7 @@ const createCard = (body, i) => {
       <img src="${body.data[i].album.cover_big}" class="card-img-top img-fluid" alt="...">
       <div class="card-body">
         <h5 class="card-title">${body.data[i].title_short}</h5>
-        <p class="card-text">
+        <p class="album card-text">
             <b>Album:</b> ${body.data[i].album.title}
         </p>
         <p class="card-text">
@@ -111,11 +111,18 @@ function createBehemothList() {
 //function to count how many songs are in the page
 
 const countSongs = () => {
-  const listOfSongs = document.getElementsByClassName("card")
-  let songNumber = 0
-  for (const song of listOfSongs) {
-    songNumber++
+  const albumParagraphs = document.getElementsByClassName("album")
+  const listOfAlbums = []
+  for (const album of albumParagraphs) {
+    listOfAlbums.push(album.innerText)
+  }
+  const listOfUniqueAlbums = [...new Set(listOfAlbums)]
+
+  console.log(listOfUniqueAlbums)
+  let albumNumber = 0
+  for (const album of listOfUniqueAlbums) {
+    albumNumber++
   }
   const h3HowManySongs = document.getElementById("how-many-songs")
-  h3HowManySongs.innerText = `There is a total of ${songNumber} in the page`
+  h3HowManySongs.innerText = `There is a total of ${albumNumber} unique albums in the page`
 }
