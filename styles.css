@@ -1,4 +1,9 @@
-.card-body h5 {
+body {
+  text-align: center;
+}
+
+.card-body h5,
+.card-body p {
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
