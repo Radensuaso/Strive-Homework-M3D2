@@ -1,2 +1,1 @@
-# Strive-Homework-M3D2
- 
+# Strive Homework M3D2
