@@ -9,6 +9,8 @@ window.onload = () => {
   metallicaButton.addEventListener("click", createMetallicaList)
   const behemothButton = document.getElementById("behemoth-button")
   behemothButton.addEventListener("click", createBehemothList)
+  const howManySongsButton = document.getElementById("how-many-songs-button")
+  howManySongsButton.addEventListener("click", countSongs)
 }
 
 let eminemCounter = 0
@@ -34,6 +36,8 @@ const createCard = (body, i) => {
   return songCard
 }
 
+//function to generate Eminem list
+
 function createEminemList() {
   const eminemRow = document.getElementById("eminem-row")
   fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=eminem", {
@@ -56,7 +60,7 @@ function createEminemList() {
     })
 }
 
-//function to generate
+//function to generate metallica list
 
 function createMetallicaList() {
   const metallicaRow = document.getElementById("metallica-row")
@@ -80,6 +84,8 @@ function createMetallicaList() {
     })
 }
 
+//function to generate behemoth list
+
 function createBehemothList() {
   const behemothRow = document.getElementById("behemoth-row")
   fetch("https://deezerdevs-deezer.p.rapidapi.com/search?q=Behemoth", {
@@ -100,4 +106,16 @@ function createBehemothList() {
     .catch((err) => {
       console.error(err)
     })
+}
+
+//function to count how many songs are in the page
+
+const countSongs = () => {
+  const listOfSongs = document.getElementsByClassName("card")
+  let songNumber = 0
+  for (const song of listOfSongs) {
+    songNumber++
+  }
+  const h3HowManySongs = document.getElementById("how-many-songs")
+  h3HowManySongs.innerText = `There is a total of ${songNumber} in the page`
 }
